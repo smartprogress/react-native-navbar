@@ -70,7 +70,7 @@ export default class NavigationBar extends Component {
 
     return (
       <Text
-        style={[styles.navBarTitleText, colorStyle, ]}>
+        style={[styles.navBarTitleText, colorStyle, data.style, ]}>
         {data.title}
       </Text>
     );
