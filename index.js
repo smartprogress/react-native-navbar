@@ -12,7 +12,7 @@ import styles from './styles';
 
 const ButtonShape = {
   title: PropTypes.string.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.any,
   handler: PropTypes.func,
 };
 
@@ -40,7 +40,7 @@ function customizeStatusBar(data) {
   StatusBarIOS.setHidden(data.hidden, animation);
 }
 
-export default class NavigationBar extends Component {
+class NavigationBar extends Component {
   componentDidMount() {
     customizeStatusBar(this.props.statusBar);
   }
@@ -50,7 +50,7 @@ export default class NavigationBar extends Component {
   }
 
   getButtonElement(data = {}, style) {
-    if (data._isReactElement) {
+    if (!!data.props) {
       return <View style={styles.navBarButton}>{data}</View>;
     }
 
@@ -62,7 +62,7 @@ export default class NavigationBar extends Component {
   }
 
   getTitleElement(data) {
-    if (data._isReactElement) {
+    if (!!data.props) {
       return <View style={styles.customTitle}>{data}</View>;
     }
 
@@ -96,10 +96,6 @@ export default class NavigationBar extends Component {
   }
 
   static propTypes = {
-    style: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.array,
-    ]),
     tintColor: PropTypes.string,
     statusBar: PropTypes.shape(StatusBarShape),
     leftButton: PropTypes.oneOfType([
@@ -114,7 +110,7 @@ export default class NavigationBar extends Component {
       PropTypes.shape(TitleShape),
       PropTypes.element,
     ]),
-  }
+  };
 
   static defaultProps = {
     statusBar: {
@@ -126,5 +122,6 @@ export default class NavigationBar extends Component {
     title: {
       title: '',
     },
-  }
+  };
 }
+module.exports = NavigationBar;
