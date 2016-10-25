@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   PixelRatio,
   StatusBarIOS,
-  Component,
   Text,
-  View,
-  PropTypes
+  View
 } from 'react-native';
 import NavbarButton from './NavbarButton';
 import styles from './styles';
