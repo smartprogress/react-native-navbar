@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {
   PixelRatio,
-  StatusBarIOS,
+  StatusBar,
   Text,
   View
 } from 'react-native';
@@ -29,13 +29,13 @@ const StatusBarShape = {
 
 function customizeStatusBar(data) {
   if (data.style) {
-    StatusBarIOS.setStyle(data.style, true);
+    StatusBar.setBarStyle(data.style, true);
   }
   const animation = data.hidden ?
     (data.hideAnimation || NavigationBar.defaultProps.statusBar.hideAnimation) :
     (data.showAnimation || NavigationBar.defaultProps.statusBar.showAnimation);
 
-  StatusBarIOS.setHidden(data.hidden, animation);
+  StatusBar.setHidden(data.hidden, animation);
 }
 
 class NavigationBar extends Component {
